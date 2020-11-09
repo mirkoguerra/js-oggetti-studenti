@@ -5,6 +5,8 @@
 // mettendo tutto qui dentro, sono certo che il codice verrà eseguito quando il DOM è già stato caricato
 $(document).ready(function(){
 
+  console.log("PUNTO 1");
+
   // creo l'oggetto studente con le chiavi richieste
   var studente = {
     "nome": "Mirko",
@@ -15,7 +17,10 @@ $(document).ready(function(){
   // grazie al for in, attraverso l'oggetto e stampo tutte le chiavi e i rispettivi valori
   for (var key in studente) {
     console.log(key + " studente: " + studente[key]);
+    $(".punto-uno").append(key + " studente: " + studente[key] + "<br>");
   }
+
+  console.log("PUNTO 2");
 
   // creo un array di oggetti, i cui oggetti sono studenti
   var studenti = [
@@ -48,10 +53,13 @@ $(document).ready(function(){
       // escludo l'età dalla stampa
       if (key != "età") {
       console.log(key + ": " + studenti[i][key]);
+      $(".punto-due").append(key + ": " + studenti[i][key] + "<br>");
       }
     }
   }
 
+  console.log("PUNTO 3");
+  
   // dichiaro le variabili relative agli input dell'utente utente
   var nomeNuovoStudente = prompt("Inserisci il tuo nome");
   var cognomeNuovoStudente = prompt("Inserisci il tuo cognome");
@@ -67,9 +75,15 @@ $(document).ready(function(){
   // aggiungo i dati dell'utente, che compongono l'oggetto nuovoStudente, all'array contenente i vari studenti
   studenti.push(nuovoStudente);
 
-  // verifico che l'array sia stato correttamente integrato
-  console.log(studenti);
+  // verifico che l'array sia stato correttamente integrato rifacendo la stampa di nome, cognome e età di tutti gli elementi dell'array
 
-
+  // ciclo su tutti gli studenti
+  for (var i = 0; i < studenti.length; i++) {
+    // attraverso ogni studente che ho ciclato, stampo nome, cognome ed età
+    for (var key in studenti[i]) {
+    console.log(key + ": " + studenti[i][key]);
+    $(".punto-tre").append(key + ": " + studenti[i][key] + "<br>");
+    }
+  }
 
 });
